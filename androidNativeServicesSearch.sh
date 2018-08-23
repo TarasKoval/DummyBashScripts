@@ -11,11 +11,13 @@ fi
 
 path=$1
 
-list=`find ${path}/out/target/product/generic_x86_64/system/ -name '*.rc'`
-list="${list} `find ${path}/out/target/product/generic_x86_64/vendor/ -name '*.rc'`"
-list="${list} `find ${path}/out/target/product/generic_x86_64/root/ -name '*.rc'`"
+list=`find ${path}out/target/product/generic_x86_64/system/ -name '*.rc'`
+list="${list} `find ${path}out/target/product/generic_x86_64/vendor/ -name '*.rc'`"
+list="${list} `find ${path}out/target/product/generic_x86_64/root/ -name '*.rc'`"
 
 for item in ${list}
 do
-	echo ${item}
+	if grep -q service ${item}; then
+		echo ${item}
+	fi
 done
