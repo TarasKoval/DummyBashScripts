@@ -1,5 +1,8 @@
 #!/bin/sh
 
+set -o errexit
+set -o nounset
+
 pid=$1
 
 if [ -z $pid ]
